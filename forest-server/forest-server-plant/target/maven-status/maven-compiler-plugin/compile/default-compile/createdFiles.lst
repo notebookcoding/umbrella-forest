@@ -1,7 +1,0 @@
-com\simulation\notebook\domain\entity\ForestPlant.class
-com\simulation\notebook\ForestServerPlantApplication.class
-com\simulation\notebook\service\ForestPlantService.class
-com\simulation\notebook\mapper\ForestPlantMapper.class
-com\simulation\notebook\service\impl\ForestPlantServiceImpl.class
-com\simulation\notebook\controller\ForestPlantController.class
-com\simulation\notebook\domain\dto\ForestPlantDTO.class
