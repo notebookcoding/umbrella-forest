@@ -1,0 +1,64 @@
+<configuration scan="true" scanPeriod="60 seconds">
+    <!-- 定义变量: 日志文件目录 和 名称 -->
+    <property name="LogDir" value="../logs/forest-server-lion"/>
+    <property name="BaseLogName" value="base"/>
+    <property name="ErrorLogName" value="error"/>
+
+    <!-- info log appender config -->
+    <appender name="info_appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LogDir}/${BaseLogName}.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LogDir}/${BaseLogName}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- maxHistory 设定的是 fileNamePattern 指定到的最小的分割单位; 上面指定到了天(小时)，那么此处代表30天(小时) -->
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <!-- 定义log level 为 INF -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- error log appender config -->
+    <appender name="error_appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LogDir}/${ErrorLogName}.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LogDir}/${ErrorLogName}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- console -->
+    <appender name="stdout_appender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 定义 LogLevel 和 Appender -->
+    <root level="INFO">
+        <appender-ref ref="info_appender"/>
+        <appender-ref ref="error_appender"/>
+
+        <!-- 如果本地调试，需要控制台看日志: 放开下面stdout_appender这一行 -->
+        <springProfile name="local">
+            <appender-ref ref="stdout_appender"/>
+        </springProfile>
+
+        <!--<appender-ref ref="stdout_appender"/>-->
+    </root>
+
+    <!-- third part library logger config -->
+    <!-- <logger name="org.apache" level="WARN"/> -->
+    <!--<logger name="org.apache" level="debug" />-->
+    <!--<logger name="java.sql" level="debug"/>-->
+</configuration>
+

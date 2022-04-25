@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>umbrella-forest</artifactId>
+        <groupId>com.simulation.notebook</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>forest-server</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>forest-server-lion</module>
+        <module>forest-server-generator</module>
+        <module>forest-server-plant</module>
+    </modules>
+
+    <dependencies>
+        <!-- 业务平台公共 config 模块 -->
+        <dependency>
+            <groupId>com.simulation.notebook</groupId>
+            <artifactId>forest-config</artifactId>
+            <version>${business.version}</version>
+        </dependency>
+        <!-- 业务公共 Bean 实体类 -->
+        <dependency>
+            <groupId>com.simulation.notebook</groupId>
+            <artifactId>forest-bean</artifactId>
+            <version>${business.version}</version>
+        </dependency>
+
+        <!-- 注册中心nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <!--  Druid 数据源  -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+
+        <!-- mysql数据库驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

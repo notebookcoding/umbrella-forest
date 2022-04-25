@@ -1,0 +1,12 @@
+com\simulation\notebook\domain\vo\ForestAnimalVO.class
+com\simulation\notebook\ForestServerLionApplication.class
+com\simulation\notebook\domain\entity\ForestAnimal.class
+com\simulation\notebook\fegin\PlantCategoryServerApiFeign.class
+com\simulation\notebook\domain\param\ForestAnimalParam.class
+com\simulation\notebook\config\LionConfig.class
+com\simulation\notebook\controller\ForestAnimalController.class
+com\simulation\notebook\controller\LionLoginController.class
+com\simulation\notebook\service\ForestAnimalService.class
+com\simulation\notebook\domain\dto\ForestAnimalDTO.class
+com\simulation\notebook\service\impl\ForestAnimalServiceImpl.class
+com\simulation\notebook\mapper\ForestAnimalMapper.class
